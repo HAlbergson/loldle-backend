@@ -1,5 +1,6 @@
 import { Sequelize, DataTypes } from "sequelize";
 import sequelize from "../scripts/database/database.js";
+import Champion from "./championModel.js";
 
 const Region = sequelize.define("Region", {
   Zuan: {

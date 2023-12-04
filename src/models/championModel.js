@@ -1,5 +1,10 @@
 import { Sequelize, DataTypes } from "sequelize";
 import sequelize from "../scripts/database/database.js";
+import Region from "./regionModel.js";
+import Position from "./positionModel.js";
+import Range from "./rangeModel.js";
+import Species from "./speciesModel.js";
+import Skin from "./skinModel.js";
 
 const Champion = sequelize.define("Champion", {
   champion_id: {
@@ -100,5 +105,8 @@ Champion.belongsToMany(Range, { through: "ChampionRange" });
 
 Species.belongsToMany(Champion, { through: "ChampionSpecies" });
 Champion.belongsToMany(Species, { through: "ChampionSpecies" });
+
+Skin.belongsTo(Champion, { foreignKey: "champion_id" });
+Champion.hasMany(Skin, { foreignKey: "champion_id" });
 
 export default Champion;
